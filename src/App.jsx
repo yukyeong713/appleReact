@@ -3,6 +3,7 @@ import "./App.css"; //css파일 쓰려면 상단에서 import 'css파일 경로'
 import { useState } from "react";
 
 function App() {
+  //이것도 실은 컴포넌트다
   let post = "강남1 우동 맛집"; //서버에서 가져온 데이터라고 가정
   let [blogTitle1, setblogTitle1] = useState("남자 코트 추천");
   let [blogTitle2, setblogTitle2] = useState("강남 우동 맛집");
@@ -82,7 +83,22 @@ function App() {
         </h4>
         <p>4월 9일</p>
       </div>
-      <h4>{post}</h4>
+      {/* <div className="modal">
+        <h4>제목</h4>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div> */}
+      <Modal></Modal>
+    </div>
+  );
+}
+
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
     </div>
   );
 }
