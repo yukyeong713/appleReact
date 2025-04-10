@@ -19,8 +19,20 @@ function App() {
   // 따봉변경 : state 변경용 함수, 이걸 써야 html 재렌더링도 잘됨.
 
   function blogTitleChange() {
-    blogTitle[0] = "여자 코드 추천";
-    setblogTitle([...blogTitle]);
+    //원본은 보존하지 않기 때문에 안좋은 코드
+    //blogTitle[0] = "여자 코드 추천";
+    //setblogTitle([...blogTitle]);
+
+    //원본은 보존하기 위해 복사본을 생성하여 내용 수정
+    let copy = [...blogTitle];
+    copy[0] = "여자 코트 추천";
+    setblogTitle(copy);
+  }
+
+  function titleSorting() {
+    let copy = [...blogTitle];
+    copy.sort();
+    setblogTitle(copy);
   }
 
   return (
@@ -28,6 +40,7 @@ function App() {
       <div className="black-nav">
         <h4 style={{ color: "red", fontSize: "16px" }}>블로그</h4>
       </div>
+      <button onClick={titleSorting}>가나다순정렬</button>
       <div className="list">
         <h4>
           <span
