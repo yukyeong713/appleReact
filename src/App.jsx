@@ -19,6 +19,8 @@ function App() {
   let [따봉, 따봉변경] = useState(0);
   // 따봉변경 : state 변경용 함수, 이걸 써야 html 재렌더링도 잘됨.
 
+  let [modal, setModal] = useState(false);
+
   function blogTitleChange() {
     //원본은 보존하지 않기 때문에 안좋은 코드
     //blogTitle[0] = "여자 코드 추천";
@@ -78,17 +80,28 @@ function App() {
         <p>4월 9일</p>
       </div>
       <div className="list">
-        <h4>
+        <h4
+          onClick={() => {
+            console.log("modal : " + false);
+
+            if (modal == true) {
+              setModal(false);
+            }
+            if (modal == false) {
+              setModal(true);
+            }
+            // setModal(true);
+          }}
+        >
           {blogTitle3}/{blogTitle[2]}
         </h4>
         <p>4월 9일</p>
       </div>
-      {/* <div className="modal">
-        <h4>제목</h4>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div> */}
-      <Modal></Modal>
+
+      {
+        //  조건식?참일때 실행하 코드 : 거짓일 때 실행할 코드
+        modal == true ? <Modal /> : null
+      }
     </div>
   );
 }
