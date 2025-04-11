@@ -21,6 +21,10 @@ function App() {
 
   let [modal, setModal] = useState(false);
 
+  // [1, 2, 3].map(function (temp) {
+  //   return "가나다";
+  // });
+
   function blogTitleChange() {
     //원본은 보존하지 않기 때문에 안좋은 코드
     //blogTitle[0] = "여자 코드 추천";
@@ -44,7 +48,7 @@ function App() {
         <h4 style={{ color: "red", fontSize: "16px" }}>블로그</h4>
       </div>
       <button onClick={titleSorting}>가나다순정렬</button>
-      <div className="list">
+      {/* <div className="list">
         <h4>
           <span
             onClick={() => {
@@ -78,8 +82,8 @@ function App() {
           {blogTitle2}/{blogTitle[1]}
         </h4>
         <p>4월 9일</p>
-      </div>
-      <div className="list">
+      </div> */}
+      {/* <div className="list">
         <h4
           onClick={() => {
             console.log("modal : " + false);
@@ -96,10 +100,44 @@ function App() {
           {blogTitle3}/{blogTitle[2]}
         </h4>
         <p>4월 9일</p>
-      </div>
+      </div> */}
+
+      {blogTitle.map(function (para, i) {
+        //para = array안에 있던 데이터
+        //i = 반복문 돌 때마다 0부터 1씩 증가하는 정수
+        return (
+          <div className="list">
+            <h4>{blogTitle}</h4>
+            <h4>
+              {para}
+              <span
+                onClick={() => {
+                  따봉변경(따봉 + 1);
+                }}
+              >
+                👍
+              </span>
+              {따봉}
+            </h4>
+            <h4
+              onClick={() => {
+                if (modal == true) {
+                  setModal(false);
+                }
+                if (modal == false) {
+                  setModal(true);
+                }
+              }}
+            >
+              모달창 : {blogTitle[i]}
+            </h4>
+            <p>4월 9일</p>
+          </div>
+        );
+      })}
 
       {
-        //  조건식?참일때 실행하 코드 : 거짓일 때 실행할 코드
+        //  조건식?참일때 실행하는 코드 : 거짓일 때 실행할 코드
         modal == true ? <Modal /> : null
       }
     </div>
