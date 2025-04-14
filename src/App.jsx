@@ -136,20 +136,28 @@ function App() {
         );
       })}
 
+      {/* 모달창 호출 */}
       {
         //  조건식?참일때 실행하는 코드 : 거짓일 때 실행할 코드
-        modal == true ? <Modal /> : null
+        modal == true ? (
+          <Modal
+            title={blogTitle}
+            color={"yellow"}
+            fn_blogTitleChange={blogTitleChange}
+          />
+        ) : null
       }
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
-    <div className="modal">
-      <h4>제목</h4>
+    <div className="modal" style={{ background: props.color }}>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={props.fn_blogTitleChange}>글수정</button>
     </div>
   );
 }
