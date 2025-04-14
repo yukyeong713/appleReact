@@ -16,9 +16,12 @@ function App() {
     "파이썬 독학",
   ]);
 
-  let [따봉, 따봉변경] = useState(0);
+  // let [따봉, 따봉변경] = useState(0);
   // 따봉변경 : state 변경용 함수, 이걸 써야 html 재렌더링도 잘됨.
-
+  // let [따봉1, 따봉변경1] = useState(0);
+  // let [따봉2, 따봉변경2] = useState(0);
+  // let [따봉3, 따봉변경3] = useState(0);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
 
   // [1, 2, 3].map(function (temp) {
@@ -106,18 +109,20 @@ function App() {
         //para = array안에 있던 데이터
         //i = 반복문 돌 때마다 0부터 1씩 증가하는 정수
         return (
-          <div className="list">
+          <div className="list" key={i}>
             <h4>{blogTitle}</h4>
             <h4>
               {para}
               <span
                 onClick={() => {
-                  따봉변경(따봉 + 1);
+                  let copy = [...따봉];
+                  copy[i] = copy[i] + 1;
+                  따봉변경(copy);
                 }}
               >
                 👍
               </span>
-              {따봉}
+              {따봉[i]}
             </h4>
             <h4
               onClick={() => {
